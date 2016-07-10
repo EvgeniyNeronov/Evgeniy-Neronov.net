@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{84441A1E-0ED5-4B6A-B9B5-B2B9033598EE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KosoyPerEntityDB</RootNamespace>
+    <AssemblyName>KosoyPerEntityDB</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="KosoiPerModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KosoiPerModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KosoiPerModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KosoiPerModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KosoiPerModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="wp_kosoicommentmeta.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoicomments.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoilayerslider.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoilinks.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoioptions.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoipd_downloadlinks.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoipd_files.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoipd_transactions.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoipostmeta.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiposts.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoirevslider_css.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoirevslider_layer_animations.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoirevslider_settings.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoirevslider_sliders.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoirevslider_slides.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoirevslider_static_slides.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoitermmeta.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiterms.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiterm_relationships.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiterm_taxonomy.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiusermeta.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiusers.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwc_osmeta.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_api_keys.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_arr_log.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_attribute_taxonomies.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_downloadable_product_permissions.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_order_itemmeta.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_order_items.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_order_status_action.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_payment_tokenmeta.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_payment_tokens.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_sessions.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_shipping_zones.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_shipping_zone_locations.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_shipping_zone_methods.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_tax_rates.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwoocommerce_tax_rate_locations.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_also_bought.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_cart_contents.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_cart_item_meta.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_checkout_forms.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_claimed_stock.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_coupon_codes.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_currency_list.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_download_status.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_meta.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_product_rating.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_purchase_logs.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_purchase_meta.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_region_tax.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_submited_form_data.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_visitors.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiwpsc_visitor_meta.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiywrr_email_blocklist.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_kosoiywrr_email_schedule.cs">
+      <DependentUpon>KosoiPerModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="KosoiPerModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KosoiPerModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="KosoiPerModel.edmx.diagram">
+      <DependentUpon>KosoiPerModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="KosoiPerModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KosoiPerModel.edmx</DependentUpon>
+      <LastGenOutput>KosoiPerModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="KosoiPerModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KosoiPerModel.edmx</DependentUpon>
+      <LastGenOutput>KosoiPerModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

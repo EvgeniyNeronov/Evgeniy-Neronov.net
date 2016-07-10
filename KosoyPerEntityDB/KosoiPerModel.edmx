@@ -1,0 +1,2424 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="klimovskii_kosoiModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="wp_kosoicommentmeta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comment_id" Type="ubigint" Nullable="false" />
+          <Property Name="meta_key" Type="varchar" MaxLength="255" />
+          <Property Name="meta_value" Type="longtext" />
+        </EntityType>
+        <EntityType Name="wp_kosoicomments">
+          <Key>
+            <PropertyRef Name="comment_ID" />
+          </Key>
+          <Property Name="comment_ID" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comment_post_ID" Type="ubigint" Nullable="false" />
+          <Property Name="comment_author" Type="tinytext" Nullable="false" />
+          <Property Name="comment_author_email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="comment_author_url" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="comment_author_IP" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="comment_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="comment_date_gmt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="comment_content" Type="text" Nullable="false" />
+          <Property Name="comment_karma" Type="int" Nullable="false" />
+          <Property Name="comment_approved" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="comment_agent" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="comment_type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="comment_parent" Type="ubigint" Nullable="false" />
+          <Property Name="user_id" Type="ubigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoilayerslider">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="author" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="slug" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="data" Type="mediumtext" Nullable="false" />
+          <Property Name="date_c" Type="int" Nullable="false" />
+          <Property Name="date_m" Type="int" Nullable="false" />
+          <Property Name="flag_hidden" Type="bool" Nullable="false" />
+          <Property Name="flag_deleted" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoilinks">
+          <Key>
+            <PropertyRef Name="link_id" />
+          </Key>
+          <Property Name="link_id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="link_url" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="link_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="link_image" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="link_target" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="link_description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="link_visible" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="link_owner" Type="ubigint" Nullable="false" />
+          <Property Name="link_rating" Type="int" Nullable="false" />
+          <Property Name="link_updated" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="link_rel" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="link_notes" Type="mediumtext" Nullable="false" />
+          <Property Name="link_rss" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoioptions">
+          <Key>
+            <PropertyRef Name="option_id" />
+          </Key>
+          <Property Name="option_id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="option_name" Type="varchar" MaxLength="191" />
+          <Property Name="option_value" Type="longtext" Nullable="false" />
+          <Property Name="autoload" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'klimovskii_kosoi.wp_kosoipd_downloadlinks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="wp_kosoipd_downloadlinks">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="file_id" />
+            <PropertyRef Name="download_key" />
+            <PropertyRef Name="owner" />
+            <PropertyRef Name="source" />
+            <PropertyRef Name="created" />
+            <PropertyRef Name="deleted" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="file_id" Type="int" Nullable="false" />
+          <Property Name="download_key" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="owner" Type="varchar" MaxLength="63" Nullable="false" />
+          <Property Name="source" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="created" Type="int" Nullable="false" />
+          <Property Name="deleted" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'klimovskii_kosoi.wp_kosoipd_files' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="wp_kosoipd_files">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="filename" />
+            <PropertyRef Name="uploaded" />
+            <PropertyRef Name="filename_original" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="currency" />
+            <PropertyRef Name="available_copies" />
+            <PropertyRef Name="license_url" />
+            <PropertyRef Name="registered" />
+            <PropertyRef Name="deleted" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="filename" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="uploaded" Type="int" Nullable="false" />
+          <Property Name="filename_original" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="currency" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="available_copies" Type="int" Nullable="false" />
+          <Property Name="license_url" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="registered" Type="int" Nullable="false" />
+          <Property Name="deleted" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'klimovskii_kosoi.wp_kosoipd_transactions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="wp_kosoipd_transactions">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="file_id" />
+            <PropertyRef Name="payer_name" />
+            <PropertyRef Name="payer_email" />
+            <PropertyRef Name="gross" />
+            <PropertyRef Name="currency" />
+            <PropertyRef Name="payment_status" />
+            <PropertyRef Name="transaction_type" />
+            <PropertyRef Name="details" />
+            <PropertyRef Name="created" />
+            <PropertyRef Name="deleted" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="file_id" Type="int" Nullable="false" />
+          <Property Name="payer_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="payer_email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="gross" Type="float" Nullable="false" />
+          <Property Name="currency" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="payment_status" Type="varchar" MaxLength="31" Nullable="false" />
+          <Property Name="transaction_type" Type="varchar" MaxLength="31" Nullable="false" />
+          <Property Name="details" Type="text" Nullable="false" />
+          <Property Name="created" Type="int" Nullable="false" />
+          <Property Name="deleted" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoipostmeta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="post_id" Type="ubigint" Nullable="false" />
+          <Property Name="meta_key" Type="varchar" MaxLength="255" />
+          <Property Name="meta_value" Type="longtext" />
+        </EntityType>
+        <EntityType Name="wp_kosoiposts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="post_author" Type="ubigint" Nullable="false" />
+          <Property Name="post_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="post_date_gmt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="post_content" Type="longtext" Nullable="false" />
+          <Property Name="post_title" Type="text" Nullable="false" />
+          <Property Name="post_excerpt" Type="text" Nullable="false" />
+          <Property Name="post_status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="comment_status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ping_status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="post_password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="post_name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="to_ping" Type="text" Nullable="false" />
+          <Property Name="pinged" Type="text" Nullable="false" />
+          <Property Name="post_modified" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="post_modified_gmt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="post_content_filtered" Type="longtext" Nullable="false" />
+          <Property Name="post_parent" Type="ubigint" Nullable="false" />
+          <Property Name="guid" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="menu_order" Type="int" Nullable="false" />
+          <Property Name="post_type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="post_mime_type" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="comment_count" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoirevslider_css">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="handle" Type="text" Nullable="false" />
+          <Property Name="settings" Type="text" />
+          <Property Name="hover" Type="text" />
+          <Property Name="params" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoirevslider_layer_animations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="handle" Type="text" Nullable="false" />
+          <Property Name="params" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoirevslider_settings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="general" Type="text" Nullable="false" />
+          <Property Name="params" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoirevslider_sliders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="tinytext" Nullable="false" />
+          <Property Name="alias" Type="tinytext" />
+          <Property Name="params" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoirevslider_slides">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="slider_id" Type="int" Nullable="false" />
+          <Property Name="slide_order" Type="int" Nullable="false" />
+          <Property Name="params" Type="text" Nullable="false" />
+          <Property Name="layers" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoirevslider_static_slides">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="slider_id" Type="int" Nullable="false" />
+          <Property Name="params" Type="text" Nullable="false" />
+          <Property Name="layers" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiterm_relationships">
+          <Key>
+            <PropertyRef Name="object_id" />
+            <PropertyRef Name="term_taxonomy_id" />
+          </Key>
+          <Property Name="object_id" Type="ubigint" Nullable="false" />
+          <Property Name="term_taxonomy_id" Type="ubigint" Nullable="false" />
+          <Property Name="term_order" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiterm_taxonomy">
+          <Key>
+            <PropertyRef Name="term_taxonomy_id" />
+          </Key>
+          <Property Name="term_taxonomy_id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="term_id" Type="ubigint" Nullable="false" />
+          <Property Name="taxonomy" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="description" Type="longtext" Nullable="false" />
+          <Property Name="parent" Type="ubigint" Nullable="false" />
+          <Property Name="count" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoitermmeta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="term_id" Type="ubigint" Nullable="false" />
+          <Property Name="meta_key" Type="varchar" MaxLength="255" />
+          <Property Name="meta_value" Type="longtext" />
+        </EntityType>
+        <EntityType Name="wp_kosoiterms">
+          <Key>
+            <PropertyRef Name="term_id" />
+          </Key>
+          <Property Name="term_id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="slug" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="term_group" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiusermeta">
+          <Key>
+            <PropertyRef Name="umeta_id" />
+          </Key>
+          <Property Name="umeta_id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="ubigint" Nullable="false" />
+          <Property Name="meta_key" Type="varchar" MaxLength="255" />
+          <Property Name="meta_value" Type="longtext" />
+        </EntityType>
+        <EntityType Name="wp_kosoiusers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_login" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="user_pass" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="user_nicename" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_url" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_registered" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="user_activation_key" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="user_status" Type="int" Nullable="false" />
+          <Property Name="display_name" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwc_osmeta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="wc_os_id" Type="ubigint" Nullable="false" />
+          <Property Name="meta_key" Type="varchar" MaxLength="255" />
+          <Property Name="meta_value" Type="longtext" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_api_keys">
+          <Key>
+            <PropertyRef Name="key_id" />
+          </Key>
+          <Property Name="key_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+          <Property Name="description" Type="longtext" />
+          <Property Name="permissions" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="consumer_key" Type="char" MaxLength="64" Nullable="false" />
+          <Property Name="consumer_secret" Type="char" MaxLength="43" Nullable="false" />
+          <Property Name="nonces" Type="longtext" />
+          <Property Name="truncated_key" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="last_access" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_arr_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="time" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="prio" Type="bool" Nullable="false" />
+          <Property Name="note" Type="tinytext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_attribute_taxonomies">
+          <Key>
+            <PropertyRef Name="attribute_id" />
+          </Key>
+          <Property Name="attribute_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="attribute_name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="attribute_label" Type="longtext" />
+          <Property Name="attribute_type" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="attribute_orderby" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="attribute_public" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_downloadable_product_permissions">
+          <Key>
+            <PropertyRef Name="permission_id" />
+          </Key>
+          <Property Name="permission_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="download_id" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="product_id" Type="bigint" Nullable="false" />
+          <Property Name="order_id" Type="bigint" Nullable="false" />
+          <Property Name="order_key" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="user_email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="user_id" Type="bigint" />
+          <Property Name="downloads_remaining" Type="varchar" MaxLength="9" />
+          <Property Name="access_granted" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="access_expires" Type="datetime" Precision="0" />
+          <Property Name="download_count" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_order_itemmeta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_item_id" Type="bigint" Nullable="false" />
+          <Property Name="meta_key" Type="varchar" MaxLength="255" />
+          <Property Name="meta_value" Type="longtext" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_order_items">
+          <Key>
+            <PropertyRef Name="order_item_id" />
+          </Key>
+          <Property Name="order_item_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_item_name" Type="longtext" Nullable="false" />
+          <Property Name="order_item_type" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="order_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_order_status_action">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="term_id" Type="int" Nullable="false" />
+          <Property Name="term_taxonomy_id" Type="int" Nullable="false" />
+          <Property Name="created" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="updated" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="status_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="status_icon" Type="text" Nullable="false" />
+          <Property Name="status_color" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="status_color_type" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="sends_email" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="display_completed" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="display_processing" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="can_cancel" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="email_to" Type="varchar" MaxLength="15" />
+          <Property Name="email_subject" Type="varchar" MaxLength="200" />
+          <Property Name="from_name" Type="varchar" MaxLength="200" />
+          <Property Name="from_address" Type="varchar" MaxLength="100" />
+          <Property Name="display_essential_info" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="display_custom_info" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="custom_title" Type="varchar" MaxLength="200" />
+          <Property Name="custom_info" Type="text" />
+          <Property Name="payment_status" Type="varchar" MaxLength="20" />
+          <Property Name="action_icon" Type="text" Nullable="false" />
+          <Property Name="display_for" Type="text" Nullable="false" />
+          <Property Name="new_status" Type="varchar" MaxLength="55" Nullable="false" />
+          <Property Name="status_slug" Type="varchar" MaxLength="17" Nullable="false" />
+          <Property Name="status_label" Type="varchar" MaxLength="55" Nullable="false" />
+          <Property Name="stock_status" Type="varchar" MaxLength="55" Nullable="false" />
+          <Property Name="display_in_reports" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="download_permitted" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="custom_email_address" Type="varchar" MaxLength="100" />
+          <Property Name="trigger_status" Type="bool" />
+          <Property Name="statuses_trigger" Type="text" Nullable="false" />
+          <Property Name="trigger_button_label" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="hide_bulk_action" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_payment_tokenmeta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="payment_token_id" Type="bigint" Nullable="false" />
+          <Property Name="meta_key" Type="varchar" MaxLength="255" />
+          <Property Name="meta_value" Type="longtext" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_payment_tokens">
+          <Key>
+            <PropertyRef Name="token_id" />
+          </Key>
+          <Property Name="token_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gateway_id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="token" Type="text" Nullable="false" />
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="is_default" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_sessions">
+          <Key>
+            <PropertyRef Name="session_key" />
+          </Key>
+          <Property Name="session_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="session_key" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="session_value" Type="longtext" Nullable="false" />
+          <Property Name="session_expiry" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_shipping_zone_locations">
+          <Key>
+            <PropertyRef Name="location_id" />
+          </Key>
+          <Property Name="location_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="zone_id" Type="bigint" Nullable="false" />
+          <Property Name="location_code" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="location_type" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_shipping_zone_methods">
+          <Key>
+            <PropertyRef Name="instance_id" />
+          </Key>
+          <Property Name="zone_id" Type="bigint" Nullable="false" />
+          <Property Name="instance_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="method_id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="method_order" Type="bigint" Nullable="false" />
+          <Property Name="is_enabled" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_shipping_zones">
+          <Key>
+            <PropertyRef Name="zone_id" />
+          </Key>
+          <Property Name="zone_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="zone_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="zone_order" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_tax_rate_locations">
+          <Key>
+            <PropertyRef Name="location_id" />
+          </Key>
+          <Property Name="location_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="location_code" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="tax_rate_id" Type="bigint" Nullable="false" />
+          <Property Name="location_type" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_tax_rates">
+          <Key>
+            <PropertyRef Name="tax_rate_id" />
+          </Key>
+          <Property Name="tax_rate_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tax_rate_country" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="tax_rate_state" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="tax_rate" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="tax_rate_name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="tax_rate_priority" Type="bigint" Nullable="false" />
+          <Property Name="tax_rate_compound" Type="int" Nullable="false" />
+          <Property Name="tax_rate_shipping" Type="int" Nullable="false" />
+          <Property Name="tax_rate_order" Type="bigint" Nullable="false" />
+          <Property Name="tax_rate_class" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_also_bought">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="selected_product" Type="ubigint" Nullable="false" />
+          <Property Name="associated_product" Type="ubigint" Nullable="false" />
+          <Property Name="quantity" Type="uint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_cart_contents">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prodid" Type="ubigint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="purchaseid" Type="ubigint" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="pnp" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="tax_charged" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="gst" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="quantity" Type="uint" Nullable="false" />
+          <Property Name="donation" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="no_shipping" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="custom_message" Type="text" Nullable="false" />
+          <Property Name="files" Type="text" Nullable="false" />
+          <Property Name="meta" Type="longtext" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_cart_item_meta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="wpsc_cart_item_id" Type="ubigint" Nullable="false" />
+          <Property Name="meta_key" Type="varchar" MaxLength="255" />
+          <Property Name="meta_value" Type="longtext" />
+          <Property Name="meta_timestamp" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_checkout_forms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="text" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="mandatory" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="display_log" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="default" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="active" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="checkout_order" Type="uint" Nullable="false" />
+          <Property Name="unique_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="options" Type="longtext" />
+          <Property Name="checkout_set" Type="varchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'klimovskii_kosoi.wp_kosoiwpsc_claimed_stock' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="wp_kosoiwpsc_claimed_stock">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="variation_stock_id" />
+            <PropertyRef Name="stock_claimed" />
+            <PropertyRef Name="last_activity" />
+            <PropertyRef Name="cart_id" />
+            <PropertyRef Name="cart_submitted" />
+          </Key>
+          <Property Name="product_id" Type="ubigint" Nullable="false" />
+          <Property Name="variation_stock_id" Type="ubigint" Nullable="false" />
+          <Property Name="stock_claimed" Type="float" Nullable="false" />
+          <Property Name="last_activity" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="cart_id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="cart_submitted" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_coupon_codes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="coupon_code" Type="varchar" MaxLength="255" />
+          <Property Name="value" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="is-percentage" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="use-once" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="is-used" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="active" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="every_product" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="start" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="expiry" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="condition" Type="text" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_currency_list">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="isocode" Type="char" MaxLength="2" />
+          <Property Name="currency" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="symbol" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="symbol_html" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="code" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="has_regions" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="tax" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="continent" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="visible" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_download_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="ubigint" />
+          <Property Name="fileid" Type="ubigint" Nullable="false" />
+          <Property Name="purchid" Type="ubigint" Nullable="false" />
+          <Property Name="cartid" Type="ubigint" />
+          <Property Name="uniqueid" Type="varchar" MaxLength="64" />
+          <Property Name="downloads" Type="int" Nullable="false" />
+          <Property Name="ip_number" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="active" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="datetime" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_meta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="object_type" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="object_id" Type="bigint" Nullable="false" />
+          <Property Name="meta_key" Type="varchar" MaxLength="255" />
+          <Property Name="meta_value" Type="longtext" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_product_rating">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ipnum" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="productid" Type="ubigint" Nullable="false" />
+          <Property Name="rated" Type="bool" Nullable="false" />
+          <Property Name="time" Type="ubigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_purchase_logs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="totalprice" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="statusno" Type="smallint" Nullable="false" />
+          <Property Name="sessionid" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="transactid" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="authcode" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="processed" Type="ubigint" Nullable="false" />
+          <Property Name="user_ID" Type="ubigint" />
+          <Property Name="date" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="gateway" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="billing_country" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="shipping_country" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="base_shipping" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="email_sent" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="stock_adjusted" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="discount_value" Type="decimal" Precision="11" Scale="2" Nullable="false" />
+          <Property Name="discount_data" Type="text" />
+          <Property Name="track_id" Type="varchar" MaxLength="50" />
+          <Property Name="billing_region" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="shipping_region" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="find_us" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="engravetext" Type="varchar" MaxLength="255" />
+          <Property Name="shipping_method" Type="varchar" MaxLength="64" />
+          <Property Name="shipping_option" Type="varchar" MaxLength="128" />
+          <Property Name="affiliate_id" Type="varchar" MaxLength="32" />
+          <Property Name="plugin_version" Type="varchar" MaxLength="32" />
+          <Property Name="notes" Type="text" />
+          <Property Name="wpec_taxes_total" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="wpec_taxes_rate" Type="decimal" Precision="11" Scale="2" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_purchase_meta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="wpsc_purchase_id" Type="ubigint" Nullable="false" />
+          <Property Name="meta_key" Type="varchar" MaxLength="255" />
+          <Property Name="meta_value" Type="longtext" />
+          <Property Name="meta_timestamp" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_region_tax">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country_id" Type="ubigint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="code" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="tax" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_submited_form_data">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="log_id" Type="ubigint" Nullable="false" />
+          <Property Name="form_id" Type="ubigint" Nullable="false" />
+          <Property Name="value" Type="longtext" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_visitor_meta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="wpsc_visitor_id" Type="ubigint" Nullable="false" />
+          <Property Name="meta_key" Type="varchar" MaxLength="255" />
+          <Property Name="meta_value" Type="longtext" />
+          <Property Name="meta_timestamp" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_visitors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="ubigint" />
+          <Property Name="last_active" Type="timestamp" Precision="0" />
+          <Property Name="expires" Type="timestamp" Precision="0" />
+          <Property Name="created" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiywrr_email_blocklist">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_email" Type="longtext" Nullable="false" />
+          <Property Name="customer_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiywrr_email_schedule">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="bigint" Nullable="false" />
+          <Property Name="order_date" Type="date" Nullable="false" />
+          <Property Name="scheduled_date" Type="date" Nullable="false" />
+          <Property Name="request_items" Type="longtext" Nullable="false" />
+          <Property Name="mail_status" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="klimovskii_kosoiModelStoreContainer">
+          <EntitySet Name="wp_kosoicommentmeta" EntityType="Self.wp_kosoicommentmeta" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoicomments" EntityType="Self.wp_kosoicomments" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoilayerslider" EntityType="Self.wp_kosoilayerslider" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoilinks" EntityType="Self.wp_kosoilinks" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoioptions" EntityType="Self.wp_kosoioptions" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoipostmeta" EntityType="Self.wp_kosoipostmeta" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiposts" EntityType="Self.wp_kosoiposts" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoirevslider_css" EntityType="Self.wp_kosoirevslider_css" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoirevslider_layer_animations" EntityType="Self.wp_kosoirevslider_layer_animations" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoirevslider_settings" EntityType="Self.wp_kosoirevslider_settings" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoirevslider_sliders" EntityType="Self.wp_kosoirevslider_sliders" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoirevslider_slides" EntityType="Self.wp_kosoirevslider_slides" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoirevslider_static_slides" EntityType="Self.wp_kosoirevslider_static_slides" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiterm_relationships" EntityType="Self.wp_kosoiterm_relationships" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiterm_taxonomy" EntityType="Self.wp_kosoiterm_taxonomy" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoitermmeta" EntityType="Self.wp_kosoitermmeta" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiterms" EntityType="Self.wp_kosoiterms" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiusermeta" EntityType="Self.wp_kosoiusermeta" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiusers" EntityType="Self.wp_kosoiusers" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwc_osmeta" EntityType="Self.wp_kosoiwc_osmeta" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_api_keys" EntityType="Self.wp_kosoiwoocommerce_api_keys" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_arr_log" EntityType="Self.wp_kosoiwoocommerce_arr_log" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_attribute_taxonomies" EntityType="Self.wp_kosoiwoocommerce_attribute_taxonomies" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_downloadable_product_permissions" EntityType="Self.wp_kosoiwoocommerce_downloadable_product_permissions" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_order_itemmeta" EntityType="Self.wp_kosoiwoocommerce_order_itemmeta" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_order_items" EntityType="Self.wp_kosoiwoocommerce_order_items" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_order_status_action" EntityType="Self.wp_kosoiwoocommerce_order_status_action" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_payment_tokenmeta" EntityType="Self.wp_kosoiwoocommerce_payment_tokenmeta" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_payment_tokens" EntityType="Self.wp_kosoiwoocommerce_payment_tokens" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_sessions" EntityType="Self.wp_kosoiwoocommerce_sessions" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_shipping_zone_locations" EntityType="Self.wp_kosoiwoocommerce_shipping_zone_locations" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_shipping_zone_methods" EntityType="Self.wp_kosoiwoocommerce_shipping_zone_methods" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_shipping_zones" EntityType="Self.wp_kosoiwoocommerce_shipping_zones" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_tax_rate_locations" EntityType="Self.wp_kosoiwoocommerce_tax_rate_locations" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwoocommerce_tax_rates" EntityType="Self.wp_kosoiwoocommerce_tax_rates" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_also_bought" EntityType="Self.wp_kosoiwpsc_also_bought" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_cart_contents" EntityType="Self.wp_kosoiwpsc_cart_contents" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_cart_item_meta" EntityType="Self.wp_kosoiwpsc_cart_item_meta" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_checkout_forms" EntityType="Self.wp_kosoiwpsc_checkout_forms" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_coupon_codes" EntityType="Self.wp_kosoiwpsc_coupon_codes" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_currency_list" EntityType="Self.wp_kosoiwpsc_currency_list" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_download_status" EntityType="Self.wp_kosoiwpsc_download_status" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_meta" EntityType="Self.wp_kosoiwpsc_meta" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_product_rating" EntityType="Self.wp_kosoiwpsc_product_rating" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_purchase_logs" EntityType="Self.wp_kosoiwpsc_purchase_logs" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_purchase_meta" EntityType="Self.wp_kosoiwpsc_purchase_meta" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_region_tax" EntityType="Self.wp_kosoiwpsc_region_tax" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_submited_form_data" EntityType="Self.wp_kosoiwpsc_submited_form_data" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_visitor_meta" EntityType="Self.wp_kosoiwpsc_visitor_meta" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiwpsc_visitors" EntityType="Self.wp_kosoiwpsc_visitors" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiywrr_email_blocklist" EntityType="Self.wp_kosoiywrr_email_blocklist" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoiywrr_email_schedule" EntityType="Self.wp_kosoiywrr_email_schedule" Schema="klimovskii_kosoi" store:Type="Tables" />
+          <EntitySet Name="wp_kosoipd_downloadlinks" EntityType="Self.wp_kosoipd_downloadlinks" store:Type="Tables" store:Schema="klimovskii_kosoi">
+            <DefiningQuery>SELECT
+`wp_kosoipd_downloadlinks`.`id`, 
+`wp_kosoipd_downloadlinks`.`file_id`, 
+`wp_kosoipd_downloadlinks`.`download_key`, 
+`wp_kosoipd_downloadlinks`.`owner`, 
+`wp_kosoipd_downloadlinks`.`source`, 
+`wp_kosoipd_downloadlinks`.`created`, 
+`wp_kosoipd_downloadlinks`.`deleted`
+FROM `wp_kosoipd_downloadlinks` AS `wp_kosoipd_downloadlinks`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="wp_kosoipd_files" EntityType="Self.wp_kosoipd_files" store:Type="Tables" store:Schema="klimovskii_kosoi">
+            <DefiningQuery>SELECT
+`wp_kosoipd_files`.`id`, 
+`wp_kosoipd_files`.`title`, 
+`wp_kosoipd_files`.`filename`, 
+`wp_kosoipd_files`.`uploaded`, 
+`wp_kosoipd_files`.`filename_original`, 
+`wp_kosoipd_files`.`price`, 
+`wp_kosoipd_files`.`currency`, 
+`wp_kosoipd_files`.`available_copies`, 
+`wp_kosoipd_files`.`license_url`, 
+`wp_kosoipd_files`.`registered`, 
+`wp_kosoipd_files`.`deleted`
+FROM `wp_kosoipd_files` AS `wp_kosoipd_files`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="wp_kosoipd_transactions" EntityType="Self.wp_kosoipd_transactions" store:Type="Tables" store:Schema="klimovskii_kosoi">
+            <DefiningQuery>SELECT
+`wp_kosoipd_transactions`.`id`, 
+`wp_kosoipd_transactions`.`file_id`, 
+`wp_kosoipd_transactions`.`payer_name`, 
+`wp_kosoipd_transactions`.`payer_email`, 
+`wp_kosoipd_transactions`.`gross`, 
+`wp_kosoipd_transactions`.`currency`, 
+`wp_kosoipd_transactions`.`payment_status`, 
+`wp_kosoipd_transactions`.`transaction_type`, 
+`wp_kosoipd_transactions`.`details`, 
+`wp_kosoipd_transactions`.`created`, 
+`wp_kosoipd_transactions`.`deleted`
+FROM `wp_kosoipd_transactions` AS `wp_kosoipd_transactions`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="wp_kosoiwpsc_claimed_stock" EntityType="Self.wp_kosoiwpsc_claimed_stock" store:Type="Tables" store:Schema="klimovskii_kosoi">
+            <DefiningQuery>SELECT
+`wp_kosoiwpsc_claimed_stock`.`product_id`, 
+`wp_kosoiwpsc_claimed_stock`.`variation_stock_id`, 
+`wp_kosoiwpsc_claimed_stock`.`stock_claimed`, 
+`wp_kosoiwpsc_claimed_stock`.`last_activity`, 
+`wp_kosoiwpsc_claimed_stock`.`cart_id`, 
+`wp_kosoiwpsc_claimed_stock`.`cart_submitted`
+FROM `wp_kosoiwpsc_claimed_stock` AS `wp_kosoiwpsc_claimed_stock`</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="klimovskii_kosoiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="wp_kosoicommentmeta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comment_id" Type="Decimal" Nullable="false" />
+          <Property Name="meta_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="meta_value" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoicomments">
+          <Key>
+            <PropertyRef Name="comment_ID" />
+          </Key>
+          <Property Name="comment_ID" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comment_post_ID" Type="Decimal" Nullable="false" />
+          <Property Name="comment_author" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="comment_author_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="comment_author_url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="comment_author_IP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="comment_date" Type="DateTime" Nullable="false" />
+          <Property Name="comment_date_gmt" Type="DateTime" Nullable="false" />
+          <Property Name="comment_content" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="comment_karma" Type="Int32" Nullable="false" />
+          <Property Name="comment_approved" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="comment_agent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="comment_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="comment_parent" Type="Decimal" Nullable="false" />
+          <Property Name="user_id" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoilayerslider">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="author" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="slug" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="data" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date_c" Type="Int32" Nullable="false" />
+          <Property Name="date_m" Type="Int32" Nullable="false" />
+          <Property Name="flag_hidden" Type="Boolean" Nullable="false" />
+          <Property Name="flag_deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoilinks">
+          <Key>
+            <PropertyRef Name="link_id" />
+          </Key>
+          <Property Name="link_id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="link_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="link_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="link_image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="link_target" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="link_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="link_visible" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="link_owner" Type="Decimal" Nullable="false" />
+          <Property Name="link_rating" Type="Int32" Nullable="false" />
+          <Property Name="link_updated" Type="DateTime" Nullable="false" />
+          <Property Name="link_rel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="link_notes" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="link_rss" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoioptions">
+          <Key>
+            <PropertyRef Name="option_id" />
+          </Key>
+          <Property Name="option_id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="option_name" Type="String" MaxLength="191" FixedLength="false" Unicode="false" />
+          <Property Name="option_value" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="autoload" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoipostmeta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="post_id" Type="Decimal" Nullable="false" />
+          <Property Name="meta_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="meta_value" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiposts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="post_author" Type="Decimal" Nullable="false" />
+          <Property Name="post_date" Type="DateTime" Nullable="false" />
+          <Property Name="post_date_gmt" Type="DateTime" Nullable="false" />
+          <Property Name="post_content" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="post_title" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="post_excerpt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="post_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="comment_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ping_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="post_password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="post_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="to_ping" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pinged" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="post_modified" Type="DateTime" Nullable="false" />
+          <Property Name="post_modified_gmt" Type="DateTime" Nullable="false" />
+          <Property Name="post_content_filtered" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="post_parent" Type="Decimal" Nullable="false" />
+          <Property Name="guid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="menu_order" Type="Int32" Nullable="false" />
+          <Property Name="post_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="post_mime_type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="comment_count" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoirevslider_css">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="handle" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="settings" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="hover" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="params" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoirevslider_layer_animations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="handle" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="params" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoirevslider_settings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="general" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="params" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoirevslider_sliders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="alias" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="params" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoirevslider_slides">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="slider_id" Type="Int32" Nullable="false" />
+          <Property Name="slide_order" Type="Int32" Nullable="false" />
+          <Property Name="params" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="layers" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoirevslider_static_slides">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="slider_id" Type="Int32" Nullable="false" />
+          <Property Name="params" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="layers" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiterm_relationships">
+          <Key>
+            <PropertyRef Name="object_id" />
+            <PropertyRef Name="term_taxonomy_id" />
+          </Key>
+          <Property Name="object_id" Type="Decimal" Nullable="false" />
+          <Property Name="term_taxonomy_id" Type="Decimal" Nullable="false" />
+          <Property Name="term_order" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiterm_taxonomy">
+          <Key>
+            <PropertyRef Name="term_taxonomy_id" />
+          </Key>
+          <Property Name="term_taxonomy_id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="term_id" Type="Decimal" Nullable="false" />
+          <Property Name="taxonomy" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="parent" Type="Decimal" Nullable="false" />
+          <Property Name="count" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoitermmeta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="term_id" Type="Decimal" Nullable="false" />
+          <Property Name="meta_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="meta_value" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiterms">
+          <Key>
+            <PropertyRef Name="term_id" />
+          </Key>
+          <Property Name="term_id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="slug" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="term_group" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiusermeta">
+          <Key>
+            <PropertyRef Name="umeta_id" />
+          </Key>
+          <Property Name="umeta_id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Decimal" Nullable="false" />
+          <Property Name="meta_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="meta_value" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiusers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_login" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_pass" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_nicename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_url" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_registered" Type="DateTime" Nullable="false" />
+          <Property Name="user_activation_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_status" Type="Int32" Nullable="false" />
+          <Property Name="display_name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwc_osmeta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="wc_os_id" Type="Decimal" Nullable="false" />
+          <Property Name="meta_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="meta_value" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_api_keys">
+          <Key>
+            <PropertyRef Name="key_id" />
+          </Key>
+          <Property Name="key_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int64" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="permissions" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="consumer_key" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="consumer_secret" Type="String" MaxLength="43" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nonces" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="truncated_key" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_access" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_arr_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="time" Type="DateTime" Nullable="false" />
+          <Property Name="prio" Type="Boolean" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_attribute_taxonomies">
+          <Key>
+            <PropertyRef Name="attribute_id" />
+          </Key>
+          <Property Name="attribute_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="attribute_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="attribute_label" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="attribute_type" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="attribute_orderby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="attribute_public" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_downloadable_product_permissions">
+          <Key>
+            <PropertyRef Name="permission_id" />
+          </Key>
+          <Property Name="permission_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="download_id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_id" Type="Int64" Nullable="false" />
+          <Property Name="order_id" Type="Int64" Nullable="false" />
+          <Property Name="order_key" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_id" Type="Int64" />
+          <Property Name="downloads_remaining" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="access_granted" Type="DateTime" Nullable="false" />
+          <Property Name="access_expires" Type="DateTime" />
+          <Property Name="download_count" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_order_itemmeta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_item_id" Type="Int64" Nullable="false" />
+          <Property Name="meta_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="meta_value" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_order_items">
+          <Key>
+            <PropertyRef Name="order_item_id" />
+          </Key>
+          <Property Name="order_item_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_item_name" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="order_item_type" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="order_id" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_order_status_action">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="term_id" Type="Int32" Nullable="false" />
+          <Property Name="term_taxonomy_id" Type="Int32" Nullable="false" />
+          <Property Name="created" Type="DateTime" Nullable="false" />
+          <Property Name="updated" Type="DateTime" Nullable="false" />
+          <Property Name="status_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status_icon" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status_color" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status_color_type" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sends_email" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="display_completed" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="display_processing" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="can_cancel" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email_to" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="email_subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="from_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="from_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="display_essential_info" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="display_custom_info" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="custom_title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="custom_info" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="payment_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="action_icon" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="display_for" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="new_status" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status_slug" Type="String" MaxLength="17" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status_label" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="stock_status" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="display_in_reports" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="download_permitted" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="custom_email_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="trigger_status" Type="Boolean" />
+          <Property Name="statuses_trigger" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="trigger_button_label" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hide_bulk_action" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_payment_tokenmeta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="payment_token_id" Type="Int64" Nullable="false" />
+          <Property Name="meta_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="meta_value" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_payment_tokens">
+          <Key>
+            <PropertyRef Name="token_id" />
+          </Key>
+          <Property Name="token_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gateway_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="token" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_id" Type="Int64" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="is_default" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_sessions">
+          <Key>
+            <PropertyRef Name="session_key" />
+          </Key>
+          <Property Name="session_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="session_key" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="session_value" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="session_expiry" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_shipping_zone_locations">
+          <Key>
+            <PropertyRef Name="location_id" />
+          </Key>
+          <Property Name="location_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="zone_id" Type="Int64" Nullable="false" />
+          <Property Name="location_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="location_type" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_shipping_zone_methods">
+          <Key>
+            <PropertyRef Name="instance_id" />
+          </Key>
+          <Property Name="zone_id" Type="Int64" Nullable="false" />
+          <Property Name="instance_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="method_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="method_order" Type="Int64" Nullable="false" />
+          <Property Name="is_enabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_shipping_zones">
+          <Key>
+            <PropertyRef Name="zone_id" />
+          </Key>
+          <Property Name="zone_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="zone_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="zone_order" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_tax_rate_locations">
+          <Key>
+            <PropertyRef Name="location_id" />
+          </Key>
+          <Property Name="location_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="location_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tax_rate_id" Type="Int64" Nullable="false" />
+          <Property Name="location_type" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwoocommerce_tax_rates">
+          <Key>
+            <PropertyRef Name="tax_rate_id" />
+          </Key>
+          <Property Name="tax_rate_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tax_rate_country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tax_rate_state" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tax_rate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tax_rate_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tax_rate_priority" Type="Int64" Nullable="false" />
+          <Property Name="tax_rate_compound" Type="Int32" Nullable="false" />
+          <Property Name="tax_rate_shipping" Type="Int32" Nullable="false" />
+          <Property Name="tax_rate_order" Type="Int64" Nullable="false" />
+          <Property Name="tax_rate_class" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_also_bought">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="selected_product" Type="Decimal" Nullable="false" />
+          <Property Name="associated_product" Type="Decimal" Nullable="false" />
+          <Property Name="quantity" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_cart_contents">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prodid" Type="Decimal" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="purchaseid" Type="Decimal" Nullable="false" />
+          <Property Name="price" Type="Decimal" Nullable="false" />
+          <Property Name="pnp" Type="Decimal" Nullable="false" />
+          <Property Name="tax_charged" Type="Decimal" Nullable="false" />
+          <Property Name="gst" Type="Decimal" Nullable="false" />
+          <Property Name="quantity" Type="Int64" Nullable="false" />
+          <Property Name="donation" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="no_shipping" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="custom_message" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="files" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="meta" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_cart_item_meta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="wpsc_cart_item_id" Type="Decimal" Nullable="false" />
+          <Property Name="meta_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="meta_value" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="meta_timestamp" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_checkout_forms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mandatory" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="display_log" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="default" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="checkout_order" Type="Int64" Nullable="false" />
+          <Property Name="unique_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="options" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="checkout_set" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_coupon_codes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="coupon_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="value" Type="Decimal" Nullable="false" />
+          <Property Name="is_percentage" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="use_once" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="is_used" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="every_product" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="start" Type="DateTime" Nullable="false" />
+          <Property Name="expiry" Type="DateTime" Nullable="false" />
+          <Property Name="condition" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_currency_list">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="country" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isocode" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="currency" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="symbol" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="symbol_html" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="has_regions" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tax" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="continent" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="visible" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_download_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Decimal" />
+          <Property Name="fileid" Type="Decimal" Nullable="false" />
+          <Property Name="purchid" Type="Decimal" Nullable="false" />
+          <Property Name="cartid" Type="Decimal" />
+          <Property Name="uniqueid" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="downloads" Type="Int32" Nullable="false" />
+          <Property Name="ip_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_meta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="object_type" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="object_id" Type="Int64" Nullable="false" />
+          <Property Name="meta_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="meta_value" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_product_rating">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ipnum" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="productid" Type="Decimal" Nullable="false" />
+          <Property Name="rated" Type="Boolean" Nullable="false" />
+          <Property Name="time" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_purchase_logs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="totalprice" Type="Decimal" Nullable="false" />
+          <Property Name="statusno" Type="Int16" Nullable="false" />
+          <Property Name="sessionid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="transactid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="authcode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="processed" Type="Decimal" Nullable="false" />
+          <Property Name="user_ID" Type="Decimal" />
+          <Property Name="date" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gateway" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_country" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_country" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="base_shipping" Type="Decimal" Nullable="false" />
+          <Property Name="email_sent" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="stock_adjusted" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="discount_value" Type="Decimal" Nullable="false" />
+          <Property Name="discount_data" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="track_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="billing_region" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_region" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="find_us" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="engravetext" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="shipping_method" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="shipping_option" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="affiliate_id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="plugin_version" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="wpec_taxes_total" Type="Decimal" />
+          <Property Name="wpec_taxes_rate" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_purchase_meta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="wpsc_purchase_id" Type="Decimal" Nullable="false" />
+          <Property Name="meta_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="meta_value" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="meta_timestamp" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_region_tax">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="country_id" Type="Decimal" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="code" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tax" Type="Single" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_submited_form_data">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="log_id" Type="Decimal" Nullable="false" />
+          <Property Name="form_id" Type="Decimal" Nullable="false" />
+          <Property Name="value" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_visitor_meta">
+          <Key>
+            <PropertyRef Name="meta_id" />
+          </Key>
+          <Property Name="meta_id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="wpsc_visitor_id" Type="Decimal" Nullable="false" />
+          <Property Name="meta_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="meta_value" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="meta_timestamp" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_visitors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Decimal" />
+          <Property Name="last_active" Type="DateTime" />
+          <Property Name="expires" Type="DateTime" />
+          <Property Name="created" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiywrr_email_blocklist">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_email" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_id" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiywrr_email_schedule">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="Int64" Nullable="false" />
+          <Property Name="order_date" Type="DateTime" Nullable="false" />
+          <Property Name="scheduled_date" Type="DateTime" Nullable="false" />
+          <Property Name="request_items" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mail_status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoipd_downloadlinks">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="file_id" />
+            <PropertyRef Name="download_key" />
+            <PropertyRef Name="owner" />
+            <PropertyRef Name="source" />
+            <PropertyRef Name="created" />
+            <PropertyRef Name="deleted" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="file_id" Type="Int32" Nullable="false" />
+          <Property Name="download_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="owner" Type="String" MaxLength="63" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="source" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created" Type="Int32" Nullable="false" />
+          <Property Name="deleted" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoipd_files">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="filename" />
+            <PropertyRef Name="uploaded" />
+            <PropertyRef Name="filename_original" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="currency" />
+            <PropertyRef Name="available_copies" />
+            <PropertyRef Name="license_url" />
+            <PropertyRef Name="registered" />
+            <PropertyRef Name="deleted" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="filename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="uploaded" Type="Int32" Nullable="false" />
+          <Property Name="filename_original" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="price" Type="Single" Nullable="false" />
+          <Property Name="currency" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="available_copies" Type="Int32" Nullable="false" />
+          <Property Name="license_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="registered" Type="Int32" Nullable="false" />
+          <Property Name="deleted" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoipd_transactions">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="file_id" />
+            <PropertyRef Name="payer_name" />
+            <PropertyRef Name="payer_email" />
+            <PropertyRef Name="gross" />
+            <PropertyRef Name="currency" />
+            <PropertyRef Name="payment_status" />
+            <PropertyRef Name="transaction_type" />
+            <PropertyRef Name="details" />
+            <PropertyRef Name="created" />
+            <PropertyRef Name="deleted" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="file_id" Type="Int32" Nullable="false" />
+          <Property Name="payer_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="payer_email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gross" Type="Single" Nullable="false" />
+          <Property Name="currency" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="payment_status" Type="String" MaxLength="31" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="transaction_type" Type="String" MaxLength="31" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="details" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created" Type="Int32" Nullable="false" />
+          <Property Name="deleted" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_kosoiwpsc_claimed_stock">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="variation_stock_id" />
+            <PropertyRef Name="stock_claimed" />
+            <PropertyRef Name="last_activity" />
+            <PropertyRef Name="cart_id" />
+            <PropertyRef Name="cart_submitted" />
+          </Key>
+          <Property Name="product_id" Type="Decimal" Nullable="false" />
+          <Property Name="variation_stock_id" Type="Decimal" Nullable="false" />
+          <Property Name="stock_claimed" Type="Single" Nullable="false" />
+          <Property Name="last_activity" Type="DateTime" Nullable="false" />
+          <Property Name="cart_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cart_submitted" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="klimovskii_kosoiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="wp_kosoicommentmeta" EntityType="Self.wp_kosoicommentmeta" />
+          <EntitySet Name="wp_kosoicomments" EntityType="Self.wp_kosoicomments" />
+          <EntitySet Name="wp_kosoilayerslider" EntityType="Self.wp_kosoilayerslider" />
+          <EntitySet Name="wp_kosoilinks" EntityType="Self.wp_kosoilinks" />
+          <EntitySet Name="wp_kosoioptions" EntityType="Self.wp_kosoioptions" />
+          <EntitySet Name="wp_kosoipostmeta" EntityType="Self.wp_kosoipostmeta" />
+          <EntitySet Name="wp_kosoiposts" EntityType="Self.wp_kosoiposts" />
+          <EntitySet Name="wp_kosoirevslider_css" EntityType="Self.wp_kosoirevslider_css" />
+          <EntitySet Name="wp_kosoirevslider_layer_animations" EntityType="Self.wp_kosoirevslider_layer_animations" />
+          <EntitySet Name="wp_kosoirevslider_settings" EntityType="Self.wp_kosoirevslider_settings" />
+          <EntitySet Name="wp_kosoirevslider_sliders" EntityType="Self.wp_kosoirevslider_sliders" />
+          <EntitySet Name="wp_kosoirevslider_slides" EntityType="Self.wp_kosoirevslider_slides" />
+          <EntitySet Name="wp_kosoirevslider_static_slides" EntityType="Self.wp_kosoirevslider_static_slides" />
+          <EntitySet Name="wp_kosoiterm_relationships" EntityType="Self.wp_kosoiterm_relationships" />
+          <EntitySet Name="wp_kosoiterm_taxonomy" EntityType="Self.wp_kosoiterm_taxonomy" />
+          <EntitySet Name="wp_kosoitermmeta" EntityType="Self.wp_kosoitermmeta" />
+          <EntitySet Name="wp_kosoiterms" EntityType="Self.wp_kosoiterms" />
+          <EntitySet Name="wp_kosoiusermeta" EntityType="Self.wp_kosoiusermeta" />
+          <EntitySet Name="wp_kosoiusers" EntityType="Self.wp_kosoiusers" />
+          <EntitySet Name="wp_kosoiwc_osmeta" EntityType="Self.wp_kosoiwc_osmeta" />
+          <EntitySet Name="wp_kosoiwoocommerce_api_keys" EntityType="Self.wp_kosoiwoocommerce_api_keys" />
+          <EntitySet Name="wp_kosoiwoocommerce_arr_log" EntityType="Self.wp_kosoiwoocommerce_arr_log" />
+          <EntitySet Name="wp_kosoiwoocommerce_attribute_taxonomies" EntityType="Self.wp_kosoiwoocommerce_attribute_taxonomies" />
+          <EntitySet Name="wp_kosoiwoocommerce_downloadable_product_permissions" EntityType="Self.wp_kosoiwoocommerce_downloadable_product_permissions" />
+          <EntitySet Name="wp_kosoiwoocommerce_order_itemmeta" EntityType="Self.wp_kosoiwoocommerce_order_itemmeta" />
+          <EntitySet Name="wp_kosoiwoocommerce_order_items" EntityType="Self.wp_kosoiwoocommerce_order_items" />
+          <EntitySet Name="wp_kosoiwoocommerce_order_status_action" EntityType="Self.wp_kosoiwoocommerce_order_status_action" />
+          <EntitySet Name="wp_kosoiwoocommerce_payment_tokenmeta" EntityType="Self.wp_kosoiwoocommerce_payment_tokenmeta" />
+          <EntitySet Name="wp_kosoiwoocommerce_payment_tokens" EntityType="Self.wp_kosoiwoocommerce_payment_tokens" />
+          <EntitySet Name="wp_kosoiwoocommerce_sessions" EntityType="Self.wp_kosoiwoocommerce_sessions" />
+          <EntitySet Name="wp_kosoiwoocommerce_shipping_zone_locations" EntityType="Self.wp_kosoiwoocommerce_shipping_zone_locations" />
+          <EntitySet Name="wp_kosoiwoocommerce_shipping_zone_methods" EntityType="Self.wp_kosoiwoocommerce_shipping_zone_methods" />
+          <EntitySet Name="wp_kosoiwoocommerce_shipping_zones" EntityType="Self.wp_kosoiwoocommerce_shipping_zones" />
+          <EntitySet Name="wp_kosoiwoocommerce_tax_rate_locations" EntityType="Self.wp_kosoiwoocommerce_tax_rate_locations" />
+          <EntitySet Name="wp_kosoiwoocommerce_tax_rates" EntityType="Self.wp_kosoiwoocommerce_tax_rates" />
+          <EntitySet Name="wp_kosoiwpsc_also_bought" EntityType="Self.wp_kosoiwpsc_also_bought" />
+          <EntitySet Name="wp_kosoiwpsc_cart_contents" EntityType="Self.wp_kosoiwpsc_cart_contents" />
+          <EntitySet Name="wp_kosoiwpsc_cart_item_meta" EntityType="Self.wp_kosoiwpsc_cart_item_meta" />
+          <EntitySet Name="wp_kosoiwpsc_checkout_forms" EntityType="Self.wp_kosoiwpsc_checkout_forms" />
+          <EntitySet Name="wp_kosoiwpsc_coupon_codes" EntityType="Self.wp_kosoiwpsc_coupon_codes" />
+          <EntitySet Name="wp_kosoiwpsc_currency_list" EntityType="Self.wp_kosoiwpsc_currency_list" />
+          <EntitySet Name="wp_kosoiwpsc_download_status" EntityType="Self.wp_kosoiwpsc_download_status" />
+          <EntitySet Name="wp_kosoiwpsc_meta" EntityType="Self.wp_kosoiwpsc_meta" />
+          <EntitySet Name="wp_kosoiwpsc_product_rating" EntityType="Self.wp_kosoiwpsc_product_rating" />
+          <EntitySet Name="wp_kosoiwpsc_purchase_logs" EntityType="Self.wp_kosoiwpsc_purchase_logs" />
+          <EntitySet Name="wp_kosoiwpsc_purchase_meta" EntityType="Self.wp_kosoiwpsc_purchase_meta" />
+          <EntitySet Name="wp_kosoiwpsc_region_tax" EntityType="Self.wp_kosoiwpsc_region_tax" />
+          <EntitySet Name="wp_kosoiwpsc_submited_form_data" EntityType="Self.wp_kosoiwpsc_submited_form_data" />
+          <EntitySet Name="wp_kosoiwpsc_visitor_meta" EntityType="Self.wp_kosoiwpsc_visitor_meta" />
+          <EntitySet Name="wp_kosoiwpsc_visitors" EntityType="Self.wp_kosoiwpsc_visitors" />
+          <EntitySet Name="wp_kosoiywrr_email_blocklist" EntityType="Self.wp_kosoiywrr_email_blocklist" />
+          <EntitySet Name="wp_kosoiywrr_email_schedule" EntityType="Self.wp_kosoiywrr_email_schedule" />
+          <EntitySet Name="wp_kosoipd_downloadlinks" EntityType="Self.wp_kosoipd_downloadlinks" />
+          <EntitySet Name="wp_kosoipd_files" EntityType="Self.wp_kosoipd_files" />
+          <EntitySet Name="wp_kosoipd_transactions" EntityType="Self.wp_kosoipd_transactions" />
+          <EntitySet Name="wp_kosoiwpsc_claimed_stock" EntityType="Self.wp_kosoiwpsc_claimed_stock" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="klimovskii_kosoiModelStoreContainer" CdmEntityContainer="klimovskii_kosoiEntities">
+          <EntitySetMapping Name="wp_kosoicommentmeta">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoicommentmeta">
+              <MappingFragment StoreEntitySet="wp_kosoicommentmeta">
+                <ScalarProperty Name="meta_id" ColumnName="meta_id" />
+                <ScalarProperty Name="comment_id" ColumnName="comment_id" />
+                <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+                <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoicomments">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoicomments">
+              <MappingFragment StoreEntitySet="wp_kosoicomments">
+                <ScalarProperty Name="comment_ID" ColumnName="comment_ID" />
+                <ScalarProperty Name="comment_post_ID" ColumnName="comment_post_ID" />
+                <ScalarProperty Name="comment_author" ColumnName="comment_author" />
+                <ScalarProperty Name="comment_author_email" ColumnName="comment_author_email" />
+                <ScalarProperty Name="comment_author_url" ColumnName="comment_author_url" />
+                <ScalarProperty Name="comment_author_IP" ColumnName="comment_author_IP" />
+                <ScalarProperty Name="comment_date" ColumnName="comment_date" />
+                <ScalarProperty Name="comment_date_gmt" ColumnName="comment_date_gmt" />
+                <ScalarProperty Name="comment_content" ColumnName="comment_content" />
+                <ScalarProperty Name="comment_karma" ColumnName="comment_karma" />
+                <ScalarProperty Name="comment_approved" ColumnName="comment_approved" />
+                <ScalarProperty Name="comment_agent" ColumnName="comment_agent" />
+                <ScalarProperty Name="comment_type" ColumnName="comment_type" />
+                <ScalarProperty Name="comment_parent" ColumnName="comment_parent" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoilayerslider">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoilayerslider">
+              <MappingFragment StoreEntitySet="wp_kosoilayerslider">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="slug" ColumnName="slug" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="date_c" ColumnName="date_c" />
+                <ScalarProperty Name="date_m" ColumnName="date_m" />
+                <ScalarProperty Name="flag_hidden" ColumnName="flag_hidden" />
+                <ScalarProperty Name="flag_deleted" ColumnName="flag_deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoilinks">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoilinks">
+              <MappingFragment StoreEntitySet="wp_kosoilinks">
+                <ScalarProperty Name="link_id" ColumnName="link_id" />
+                <ScalarProperty Name="link_url" ColumnName="link_url" />
+                <ScalarProperty Name="link_name" ColumnName="link_name" />
+                <ScalarProperty Name="link_image" ColumnName="link_image" />
+                <ScalarProperty Name="link_target" ColumnName="link_target" />
+                <ScalarProperty Name="link_description" ColumnName="link_description" />
+                <ScalarProperty Name="link_visible" ColumnName="link_visible" />
+                <ScalarProperty Name="link_owner" ColumnName="link_owner" />
+                <ScalarProperty Name="link_rating" ColumnName="link_rating" />
+                <ScalarProperty Name="link_updated" ColumnName="link_updated" />
+                <ScalarProperty Name="link_rel" ColumnName="link_rel" />
+                <ScalarProperty Name="link_notes" ColumnName="link_notes" />
+                <ScalarProperty Name="link_rss" ColumnName="link_rss" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoioptions">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoioptions">
+              <MappingFragment StoreEntitySet="wp_kosoioptions">
+                <ScalarProperty Name="option_id" ColumnName="option_id" />
+                <ScalarProperty Name="option_name" ColumnName="option_name" />
+                <ScalarProperty Name="option_value" ColumnName="option_value" />
+                <ScalarProperty Name="autoload" ColumnName="autoload" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoipostmeta">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoipostmeta">
+              <MappingFragment StoreEntitySet="wp_kosoipostmeta">
+                <ScalarProperty Name="meta_id" ColumnName="meta_id" />
+                <ScalarProperty Name="post_id" ColumnName="post_id" />
+                <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+                <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiposts">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiposts">
+              <MappingFragment StoreEntitySet="wp_kosoiposts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="post_author" ColumnName="post_author" />
+                <ScalarProperty Name="post_date" ColumnName="post_date" />
+                <ScalarProperty Name="post_date_gmt" ColumnName="post_date_gmt" />
+                <ScalarProperty Name="post_content" ColumnName="post_content" />
+                <ScalarProperty Name="post_title" ColumnName="post_title" />
+                <ScalarProperty Name="post_excerpt" ColumnName="post_excerpt" />
+                <ScalarProperty Name="post_status" ColumnName="post_status" />
+                <ScalarProperty Name="comment_status" ColumnName="comment_status" />
+                <ScalarProperty Name="ping_status" ColumnName="ping_status" />
+                <ScalarProperty Name="post_password" ColumnName="post_password" />
+                <ScalarProperty Name="post_name" ColumnName="post_name" />
+                <ScalarProperty Name="to_ping" ColumnName="to_ping" />
+                <ScalarProperty Name="pinged" ColumnName="pinged" />
+                <ScalarProperty Name="post_modified" ColumnName="post_modified" />
+                <ScalarProperty Name="post_modified_gmt" ColumnName="post_modified_gmt" />
+                <ScalarProperty Name="post_content_filtered" ColumnName="post_content_filtered" />
+                <ScalarProperty Name="post_parent" ColumnName="post_parent" />
+                <ScalarProperty Name="guid" ColumnName="guid" />
+                <ScalarProperty Name="menu_order" ColumnName="menu_order" />
+                <ScalarProperty Name="post_type" ColumnName="post_type" />
+                <ScalarProperty Name="post_mime_type" ColumnName="post_mime_type" />
+                <ScalarProperty Name="comment_count" ColumnName="comment_count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoirevslider_css">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoirevslider_css">
+              <MappingFragment StoreEntitySet="wp_kosoirevslider_css">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="handle" ColumnName="handle" />
+                <ScalarProperty Name="settings" ColumnName="settings" />
+                <ScalarProperty Name="hover" ColumnName="hover" />
+                <ScalarProperty Name="params" ColumnName="params" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoirevslider_layer_animations">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoirevslider_layer_animations">
+              <MappingFragment StoreEntitySet="wp_kosoirevslider_layer_animations">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="handle" ColumnName="handle" />
+                <ScalarProperty Name="params" ColumnName="params" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoirevslider_settings">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoirevslider_settings">
+              <MappingFragment StoreEntitySet="wp_kosoirevslider_settings">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="general" ColumnName="general" />
+                <ScalarProperty Name="params" ColumnName="params" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoirevslider_sliders">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoirevslider_sliders">
+              <MappingFragment StoreEntitySet="wp_kosoirevslider_sliders">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="alias" ColumnName="alias" />
+                <ScalarProperty Name="params" ColumnName="params" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoirevslider_slides">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoirevslider_slides">
+              <MappingFragment StoreEntitySet="wp_kosoirevslider_slides">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="slider_id" ColumnName="slider_id" />
+                <ScalarProperty Name="slide_order" ColumnName="slide_order" />
+                <ScalarProperty Name="params" ColumnName="params" />
+                <ScalarProperty Name="layers" ColumnName="layers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoirevslider_static_slides">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoirevslider_static_slides">
+              <MappingFragment StoreEntitySet="wp_kosoirevslider_static_slides">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="slider_id" ColumnName="slider_id" />
+                <ScalarProperty Name="params" ColumnName="params" />
+                <ScalarProperty Name="layers" ColumnName="layers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiterm_relationships">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiterm_relationships">
+              <MappingFragment StoreEntitySet="wp_kosoiterm_relationships">
+                <ScalarProperty Name="object_id" ColumnName="object_id" />
+                <ScalarProperty Name="term_taxonomy_id" ColumnName="term_taxonomy_id" />
+                <ScalarProperty Name="term_order" ColumnName="term_order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiterm_taxonomy">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiterm_taxonomy">
+              <MappingFragment StoreEntitySet="wp_kosoiterm_taxonomy">
+                <ScalarProperty Name="term_taxonomy_id" ColumnName="term_taxonomy_id" />
+                <ScalarProperty Name="term_id" ColumnName="term_id" />
+                <ScalarProperty Name="taxonomy" ColumnName="taxonomy" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="parent" ColumnName="parent" />
+                <ScalarProperty Name="count" ColumnName="count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoitermmeta">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoitermmeta">
+              <MappingFragment StoreEntitySet="wp_kosoitermmeta">
+                <ScalarProperty Name="meta_id" ColumnName="meta_id" />
+                <ScalarProperty Name="term_id" ColumnName="term_id" />
+                <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+                <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiterms">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiterms">
+              <MappingFragment StoreEntitySet="wp_kosoiterms">
+                <ScalarProperty Name="term_id" ColumnName="term_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="slug" ColumnName="slug" />
+                <ScalarProperty Name="term_group" ColumnName="term_group" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiusermeta">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiusermeta">
+              <MappingFragment StoreEntitySet="wp_kosoiusermeta">
+                <ScalarProperty Name="umeta_id" ColumnName="umeta_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+                <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiusers">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiusers">
+              <MappingFragment StoreEntitySet="wp_kosoiusers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="user_login" ColumnName="user_login" />
+                <ScalarProperty Name="user_pass" ColumnName="user_pass" />
+                <ScalarProperty Name="user_nicename" ColumnName="user_nicename" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_url" ColumnName="user_url" />
+                <ScalarProperty Name="user_registered" ColumnName="user_registered" />
+                <ScalarProperty Name="user_activation_key" ColumnName="user_activation_key" />
+                <ScalarProperty Name="user_status" ColumnName="user_status" />
+                <ScalarProperty Name="display_name" ColumnName="display_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwc_osmeta">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwc_osmeta">
+              <MappingFragment StoreEntitySet="wp_kosoiwc_osmeta">
+                <ScalarProperty Name="meta_id" ColumnName="meta_id" />
+                <ScalarProperty Name="wc_os_id" ColumnName="wc_os_id" />
+                <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+                <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_api_keys">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_api_keys">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_api_keys">
+                <ScalarProperty Name="key_id" ColumnName="key_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="permissions" ColumnName="permissions" />
+                <ScalarProperty Name="consumer_key" ColumnName="consumer_key" />
+                <ScalarProperty Name="consumer_secret" ColumnName="consumer_secret" />
+                <ScalarProperty Name="nonces" ColumnName="nonces" />
+                <ScalarProperty Name="truncated_key" ColumnName="truncated_key" />
+                <ScalarProperty Name="last_access" ColumnName="last_access" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_arr_log">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_arr_log">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_arr_log">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="prio" ColumnName="prio" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_attribute_taxonomies">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_attribute_taxonomies">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_attribute_taxonomies">
+                <ScalarProperty Name="attribute_id" ColumnName="attribute_id" />
+                <ScalarProperty Name="attribute_name" ColumnName="attribute_name" />
+                <ScalarProperty Name="attribute_label" ColumnName="attribute_label" />
+                <ScalarProperty Name="attribute_type" ColumnName="attribute_type" />
+                <ScalarProperty Name="attribute_orderby" ColumnName="attribute_orderby" />
+                <ScalarProperty Name="attribute_public" ColumnName="attribute_public" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_downloadable_product_permissions">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_downloadable_product_permissions">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_downloadable_product_permissions">
+                <ScalarProperty Name="permission_id" ColumnName="permission_id" />
+                <ScalarProperty Name="download_id" ColumnName="download_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="order_key" ColumnName="order_key" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="downloads_remaining" ColumnName="downloads_remaining" />
+                <ScalarProperty Name="access_granted" ColumnName="access_granted" />
+                <ScalarProperty Name="access_expires" ColumnName="access_expires" />
+                <ScalarProperty Name="download_count" ColumnName="download_count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_order_itemmeta">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_order_itemmeta">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_order_itemmeta">
+                <ScalarProperty Name="meta_id" ColumnName="meta_id" />
+                <ScalarProperty Name="order_item_id" ColumnName="order_item_id" />
+                <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+                <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_order_items">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_order_items">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_order_items">
+                <ScalarProperty Name="order_item_id" ColumnName="order_item_id" />
+                <ScalarProperty Name="order_item_name" ColumnName="order_item_name" />
+                <ScalarProperty Name="order_item_type" ColumnName="order_item_type" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_order_status_action">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_order_status_action">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_order_status_action">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="term_id" ColumnName="term_id" />
+                <ScalarProperty Name="term_taxonomy_id" ColumnName="term_taxonomy_id" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="updated" ColumnName="updated" />
+                <ScalarProperty Name="status_name" ColumnName="status_name" />
+                <ScalarProperty Name="status_icon" ColumnName="status_icon" />
+                <ScalarProperty Name="status_color" ColumnName="status_color" />
+                <ScalarProperty Name="status_color_type" ColumnName="status_color_type" />
+                <ScalarProperty Name="sends_email" ColumnName="sends_email" />
+                <ScalarProperty Name="display_completed" ColumnName="display_completed" />
+                <ScalarProperty Name="display_processing" ColumnName="display_processing" />
+                <ScalarProperty Name="can_cancel" ColumnName="can_cancel" />
+                <ScalarProperty Name="email_to" ColumnName="email_to" />
+                <ScalarProperty Name="email_subject" ColumnName="email_subject" />
+                <ScalarProperty Name="from_name" ColumnName="from_name" />
+                <ScalarProperty Name="from_address" ColumnName="from_address" />
+                <ScalarProperty Name="display_essential_info" ColumnName="display_essential_info" />
+                <ScalarProperty Name="display_custom_info" ColumnName="display_custom_info" />
+                <ScalarProperty Name="custom_title" ColumnName="custom_title" />
+                <ScalarProperty Name="custom_info" ColumnName="custom_info" />
+                <ScalarProperty Name="payment_status" ColumnName="payment_status" />
+                <ScalarProperty Name="action_icon" ColumnName="action_icon" />
+                <ScalarProperty Name="display_for" ColumnName="display_for" />
+                <ScalarProperty Name="new_status" ColumnName="new_status" />
+                <ScalarProperty Name="status_slug" ColumnName="status_slug" />
+                <ScalarProperty Name="status_label" ColumnName="status_label" />
+                <ScalarProperty Name="stock_status" ColumnName="stock_status" />
+                <ScalarProperty Name="display_in_reports" ColumnName="display_in_reports" />
+                <ScalarProperty Name="download_permitted" ColumnName="download_permitted" />
+                <ScalarProperty Name="custom_email_address" ColumnName="custom_email_address" />
+                <ScalarProperty Name="trigger_status" ColumnName="trigger_status" />
+                <ScalarProperty Name="statuses_trigger" ColumnName="statuses_trigger" />
+                <ScalarProperty Name="trigger_button_label" ColumnName="trigger_button_label" />
+                <ScalarProperty Name="hide_bulk_action" ColumnName="hide_bulk_action" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_payment_tokenmeta">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_payment_tokenmeta">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_payment_tokenmeta">
+                <ScalarProperty Name="meta_id" ColumnName="meta_id" />
+                <ScalarProperty Name="payment_token_id" ColumnName="payment_token_id" />
+                <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+                <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_payment_tokens">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_payment_tokens">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_payment_tokens">
+                <ScalarProperty Name="token_id" ColumnName="token_id" />
+                <ScalarProperty Name="gateway_id" ColumnName="gateway_id" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="is_default" ColumnName="is_default" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_sessions">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_sessions">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_sessions">
+                <ScalarProperty Name="session_id" ColumnName="session_id" />
+                <ScalarProperty Name="session_key" ColumnName="session_key" />
+                <ScalarProperty Name="session_value" ColumnName="session_value" />
+                <ScalarProperty Name="session_expiry" ColumnName="session_expiry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_shipping_zone_locations">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_shipping_zone_locations">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_shipping_zone_locations">
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
+                <ScalarProperty Name="zone_id" ColumnName="zone_id" />
+                <ScalarProperty Name="location_code" ColumnName="location_code" />
+                <ScalarProperty Name="location_type" ColumnName="location_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_shipping_zone_methods">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_shipping_zone_methods">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_shipping_zone_methods">
+                <ScalarProperty Name="zone_id" ColumnName="zone_id" />
+                <ScalarProperty Name="instance_id" ColumnName="instance_id" />
+                <ScalarProperty Name="method_id" ColumnName="method_id" />
+                <ScalarProperty Name="method_order" ColumnName="method_order" />
+                <ScalarProperty Name="is_enabled" ColumnName="is_enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_shipping_zones">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_shipping_zones">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_shipping_zones">
+                <ScalarProperty Name="zone_id" ColumnName="zone_id" />
+                <ScalarProperty Name="zone_name" ColumnName="zone_name" />
+                <ScalarProperty Name="zone_order" ColumnName="zone_order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_tax_rate_locations">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_tax_rate_locations">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_tax_rate_locations">
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
+                <ScalarProperty Name="location_code" ColumnName="location_code" />
+                <ScalarProperty Name="tax_rate_id" ColumnName="tax_rate_id" />
+                <ScalarProperty Name="location_type" ColumnName="location_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwoocommerce_tax_rates">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwoocommerce_tax_rates">
+              <MappingFragment StoreEntitySet="wp_kosoiwoocommerce_tax_rates">
+                <ScalarProperty Name="tax_rate_id" ColumnName="tax_rate_id" />
+                <ScalarProperty Name="tax_rate_country" ColumnName="tax_rate_country" />
+                <ScalarProperty Name="tax_rate_state" ColumnName="tax_rate_state" />
+                <ScalarProperty Name="tax_rate" ColumnName="tax_rate" />
+                <ScalarProperty Name="tax_rate_name" ColumnName="tax_rate_name" />
+                <ScalarProperty Name="tax_rate_priority" ColumnName="tax_rate_priority" />
+                <ScalarProperty Name="tax_rate_compound" ColumnName="tax_rate_compound" />
+                <ScalarProperty Name="tax_rate_shipping" ColumnName="tax_rate_shipping" />
+                <ScalarProperty Name="tax_rate_order" ColumnName="tax_rate_order" />
+                <ScalarProperty Name="tax_rate_class" ColumnName="tax_rate_class" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_also_bought">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_also_bought">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_also_bought">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="selected_product" ColumnName="selected_product" />
+                <ScalarProperty Name="associated_product" ColumnName="associated_product" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_cart_contents">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_cart_contents">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_cart_contents">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="prodid" ColumnName="prodid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="purchaseid" ColumnName="purchaseid" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="pnp" ColumnName="pnp" />
+                <ScalarProperty Name="tax_charged" ColumnName="tax_charged" />
+                <ScalarProperty Name="gst" ColumnName="gst" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="donation" ColumnName="donation" />
+                <ScalarProperty Name="no_shipping" ColumnName="no_shipping" />
+                <ScalarProperty Name="custom_message" ColumnName="custom_message" />
+                <ScalarProperty Name="files" ColumnName="files" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_cart_item_meta">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_cart_item_meta">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_cart_item_meta">
+                <ScalarProperty Name="meta_id" ColumnName="meta_id" />
+                <ScalarProperty Name="wpsc_cart_item_id" ColumnName="wpsc_cart_item_id" />
+                <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+                <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+                <ScalarProperty Name="meta_timestamp" ColumnName="meta_timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_checkout_forms">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_checkout_forms">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_checkout_forms">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="mandatory" ColumnName="mandatory" />
+                <ScalarProperty Name="display_log" ColumnName="display_log" />
+                <ScalarProperty Name="default" ColumnName="default" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="checkout_order" ColumnName="checkout_order" />
+                <ScalarProperty Name="unique_name" ColumnName="unique_name" />
+                <ScalarProperty Name="options" ColumnName="options" />
+                <ScalarProperty Name="checkout_set" ColumnName="checkout_set" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_coupon_codes">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_coupon_codes">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_coupon_codes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="coupon_code" ColumnName="coupon_code" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="is_percentage" ColumnName="is-percentage" />
+                <ScalarProperty Name="use_once" ColumnName="use-once" />
+                <ScalarProperty Name="is_used" ColumnName="is-used" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="every_product" ColumnName="every_product" />
+                <ScalarProperty Name="start" ColumnName="start" />
+                <ScalarProperty Name="expiry" ColumnName="expiry" />
+                <ScalarProperty Name="condition" ColumnName="condition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_currency_list">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_currency_list">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_currency_list">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="isocode" ColumnName="isocode" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="symbol" ColumnName="symbol" />
+                <ScalarProperty Name="symbol_html" ColumnName="symbol_html" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="has_regions" ColumnName="has_regions" />
+                <ScalarProperty Name="tax" ColumnName="tax" />
+                <ScalarProperty Name="continent" ColumnName="continent" />
+                <ScalarProperty Name="visible" ColumnName="visible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_download_status">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_download_status">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_download_status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="fileid" ColumnName="fileid" />
+                <ScalarProperty Name="purchid" ColumnName="purchid" />
+                <ScalarProperty Name="cartid" ColumnName="cartid" />
+                <ScalarProperty Name="uniqueid" ColumnName="uniqueid" />
+                <ScalarProperty Name="downloads" ColumnName="downloads" />
+                <ScalarProperty Name="ip_number" ColumnName="ip_number" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_meta">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_meta">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_meta">
+                <ScalarProperty Name="meta_id" ColumnName="meta_id" />
+                <ScalarProperty Name="object_type" ColumnName="object_type" />
+                <ScalarProperty Name="object_id" ColumnName="object_id" />
+                <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+                <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_product_rating">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_product_rating">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_product_rating">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ipnum" ColumnName="ipnum" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="rated" ColumnName="rated" />
+                <ScalarProperty Name="time" ColumnName="time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_purchase_logs">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_purchase_logs">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_purchase_logs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="totalprice" ColumnName="totalprice" />
+                <ScalarProperty Name="statusno" ColumnName="statusno" />
+                <ScalarProperty Name="sessionid" ColumnName="sessionid" />
+                <ScalarProperty Name="transactid" ColumnName="transactid" />
+                <ScalarProperty Name="authcode" ColumnName="authcode" />
+                <ScalarProperty Name="processed" ColumnName="processed" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="gateway" ColumnName="gateway" />
+                <ScalarProperty Name="billing_country" ColumnName="billing_country" />
+                <ScalarProperty Name="shipping_country" ColumnName="shipping_country" />
+                <ScalarProperty Name="base_shipping" ColumnName="base_shipping" />
+                <ScalarProperty Name="email_sent" ColumnName="email_sent" />
+                <ScalarProperty Name="stock_adjusted" ColumnName="stock_adjusted" />
+                <ScalarProperty Name="discount_value" ColumnName="discount_value" />
+                <ScalarProperty Name="discount_data" ColumnName="discount_data" />
+                <ScalarProperty Name="track_id" ColumnName="track_id" />
+                <ScalarProperty Name="billing_region" ColumnName="billing_region" />
+                <ScalarProperty Name="shipping_region" ColumnName="shipping_region" />
+                <ScalarProperty Name="find_us" ColumnName="find_us" />
+                <ScalarProperty Name="engravetext" ColumnName="engravetext" />
+                <ScalarProperty Name="shipping_method" ColumnName="shipping_method" />
+                <ScalarProperty Name="shipping_option" ColumnName="shipping_option" />
+                <ScalarProperty Name="affiliate_id" ColumnName="affiliate_id" />
+                <ScalarProperty Name="plugin_version" ColumnName="plugin_version" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="wpec_taxes_total" ColumnName="wpec_taxes_total" />
+                <ScalarProperty Name="wpec_taxes_rate" ColumnName="wpec_taxes_rate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_purchase_meta">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_purchase_meta">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_purchase_meta">
+                <ScalarProperty Name="meta_id" ColumnName="meta_id" />
+                <ScalarProperty Name="wpsc_purchase_id" ColumnName="wpsc_purchase_id" />
+                <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+                <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+                <ScalarProperty Name="meta_timestamp" ColumnName="meta_timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_region_tax">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_region_tax">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_region_tax">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="tax" ColumnName="tax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_submited_form_data">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_submited_form_data">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_submited_form_data">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="log_id" ColumnName="log_id" />
+                <ScalarProperty Name="form_id" ColumnName="form_id" />
+                <ScalarProperty Name="value" ColumnName="value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_visitor_meta">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_visitor_meta">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_visitor_meta">
+                <ScalarProperty Name="meta_id" ColumnName="meta_id" />
+                <ScalarProperty Name="wpsc_visitor_id" ColumnName="wpsc_visitor_id" />
+                <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+                <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+                <ScalarProperty Name="meta_timestamp" ColumnName="meta_timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_visitors">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_visitors">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_visitors">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="last_active" ColumnName="last_active" />
+                <ScalarProperty Name="expires" ColumnName="expires" />
+                <ScalarProperty Name="created" ColumnName="created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiywrr_email_blocklist">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiywrr_email_blocklist">
+              <MappingFragment StoreEntitySet="wp_kosoiywrr_email_blocklist">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="customer_email" ColumnName="customer_email" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiywrr_email_schedule">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiywrr_email_schedule">
+              <MappingFragment StoreEntitySet="wp_kosoiywrr_email_schedule">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="order_date" ColumnName="order_date" />
+                <ScalarProperty Name="scheduled_date" ColumnName="scheduled_date" />
+                <ScalarProperty Name="request_items" ColumnName="request_items" />
+                <ScalarProperty Name="mail_status" ColumnName="mail_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoipd_downloadlinks">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoipd_downloadlinks">
+              <MappingFragment StoreEntitySet="wp_kosoipd_downloadlinks">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="file_id" ColumnName="file_id" />
+                <ScalarProperty Name="download_key" ColumnName="download_key" />
+                <ScalarProperty Name="owner" ColumnName="owner" />
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoipd_files">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoipd_files">
+              <MappingFragment StoreEntitySet="wp_kosoipd_files">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="uploaded" ColumnName="uploaded" />
+                <ScalarProperty Name="filename_original" ColumnName="filename_original" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="available_copies" ColumnName="available_copies" />
+                <ScalarProperty Name="license_url" ColumnName="license_url" />
+                <ScalarProperty Name="registered" ColumnName="registered" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoipd_transactions">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoipd_transactions">
+              <MappingFragment StoreEntitySet="wp_kosoipd_transactions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="file_id" ColumnName="file_id" />
+                <ScalarProperty Name="payer_name" ColumnName="payer_name" />
+                <ScalarProperty Name="payer_email" ColumnName="payer_email" />
+                <ScalarProperty Name="gross" ColumnName="gross" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="payment_status" ColumnName="payment_status" />
+                <ScalarProperty Name="transaction_type" ColumnName="transaction_type" />
+                <ScalarProperty Name="details" ColumnName="details" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_kosoiwpsc_claimed_stock">
+            <EntityTypeMapping TypeName="klimovskii_kosoiModel.wp_kosoiwpsc_claimed_stock">
+              <MappingFragment StoreEntitySet="wp_kosoiwpsc_claimed_stock">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="variation_stock_id" ColumnName="variation_stock_id" />
+                <ScalarProperty Name="stock_claimed" ColumnName="stock_claimed" />
+                <ScalarProperty Name="last_activity" ColumnName="last_activity" />
+                <ScalarProperty Name="cart_id" ColumnName="cart_id" />
+                <ScalarProperty Name="cart_submitted" ColumnName="cart_submitted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

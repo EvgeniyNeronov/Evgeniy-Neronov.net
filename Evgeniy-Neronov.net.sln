@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evgeniy-Neronov.net", "Evgeniy-Neronov.net\Evgeniy-Neronov.net.csproj", "{5B9F7C64-0E64-44CF-9A1F-6E2BDE594F2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KosoyPerEntityDB", "KosoyPerEntityDB\KosoyPerEntityDB.csproj", "{84441A1E-0ED5-4B6A-B9B5-B2B9033598EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleProject", "TestConsoleProject\TestConsoleProject.csproj", "{2F1DF5C7-8D64-475B-BF2F-B64E55119948}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{5B9F7C64-0E64-44CF-9A1F-6E2BDE594F2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B9F7C64-0E64-44CF-9A1F-6E2BDE594F2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B9F7C64-0E64-44CF-9A1F-6E2BDE594F2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84441A1E-0ED5-4B6A-B9B5-B2B9033598EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84441A1E-0ED5-4B6A-B9B5-B2B9033598EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84441A1E-0ED5-4B6A-B9B5-B2B9033598EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84441A1E-0ED5-4B6A-B9B5-B2B9033598EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F1DF5C7-8D64-475B-BF2F-B64E55119948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F1DF5C7-8D64-475B-BF2F-B64E55119948}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F1DF5C7-8D64-475B-BF2F-B64E55119948}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F1DF5C7-8D64-475B-BF2F-B64E55119948}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

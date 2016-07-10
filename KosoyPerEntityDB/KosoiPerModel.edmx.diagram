@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1de24a2a3cf6421a82b2864ed0b02be2" Name="Diagram1">
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoicommentmeta" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoicomments" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoilayerslider" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoilinks" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoioptions" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoipostmeta" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiposts" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoirevslider_css" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoirevslider_layer_animations" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoirevslider_settings" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoirevslider_sliders" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoirevslider_slides" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoirevslider_static_slides" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiterm_relationships" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiterm_taxonomy" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoitermmeta" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiterms" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiusermeta" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiusers" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwc_osmeta" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_api_keys" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_arr_log" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_attribute_taxonomies" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_downloadable_product_permissions" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_order_itemmeta" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_order_items" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_order_status_action" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_payment_tokenmeta" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_payment_tokens" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_sessions" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_shipping_zone_locations" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_shipping_zone_methods" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_shipping_zones" Width="1.5" PointX="4.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_tax_rate_locations" Width="1.5" PointX="10.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwoocommerce_tax_rates" Width="1.5" PointX="12.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_also_bought" Width="1.5" PointX="14.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_cart_contents" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_cart_item_meta" Width="1.5" PointX="16.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_checkout_forms" Width="1.5" PointX="6.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_coupon_codes" Width="1.5" PointX="16.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_currency_list" Width="1.5" PointX="16.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_download_status" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_meta" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_product_rating" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_purchase_logs" Width="1.5" PointX="18.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_purchase_meta" Width="1.5" PointX="8.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_region_tax" Width="1.5" PointX="18.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_submited_form_data" Width="1.5" PointX="18.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_visitor_meta" Width="1.5" PointX="10.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_visitors" Width="1.5" PointX="12.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiywrr_email_blocklist" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiywrr_email_schedule" Width="1.5" PointX="20.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoipd_downloadlinks" Width="1.5" PointX="4.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoipd_files" Width="1.5" PointX="20.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoipd_transactions" Width="1.5" PointX="20.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="klimovskii_kosoiModel.wp_kosoiwpsc_claimed_stock" Width="1.5" PointX="20.75" PointY="14.75" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
