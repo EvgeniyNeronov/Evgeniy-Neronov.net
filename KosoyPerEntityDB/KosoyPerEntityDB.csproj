@@ -63,6 +63,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KosoiPerModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\KosoiDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="wp_kosoicommentmeta.cs">
       <DependentUpon>KosoiPerModel.tt</DependentUpon>

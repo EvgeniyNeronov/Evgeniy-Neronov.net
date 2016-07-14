@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KosoyPerEntityDB;
+using KosoyPerEntityDB.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +12,12 @@ namespace TestConsoleProject
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("This is a test");
+            KosoiDataProvider dataProvider = new KosoiDataProvider();
+
+            dataProvider.GetOrdersItemInfo().ForEach((line) => 
+            {
+                Console.WriteLine(line);
+            });
         }
     }
 }
